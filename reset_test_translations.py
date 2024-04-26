@@ -1,3 +1,5 @@
+import os
+
 string = '''<?php
 // TEST TRANSLATIONS
 __("this is the first test");
@@ -18,7 +20,9 @@ __("double test") && __("double test");
 <div class="div-test-class"><?php echo __("test") ?> </div>
 <?php echo __("(testing)") ?>'''
 
-file_path = "test-translation/test_translation.php"
+file_path = "test_folder_translation/test_file_translation.php"
 
 with open(file_path, "w") as file:
 	file.write(string)
+
+os.system("rm -rf *.po")
