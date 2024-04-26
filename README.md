@@ -12,3 +12,17 @@
 ## Test Google translate
 `test_google.py`
 
+# Config
+Basic config demo: `search_translations_config_demo.json`
+```
+{
+	"path_search" : ".",
+	"path_translations" : ".",
+	"domain" : "translation",
+	"translate" : false,
+	"transform_lowercase" : false,
+	"rem_old_translations" : false,
+	"generate_mo" : false,
+	"languages_code_translate" : ["es_ES", "en_US"]
+}
+```
