@@ -26,3 +26,4 @@ with open(file_path, "w") as file:
 	file.write(string)
 
 os.system("rm -rf *.po")
+os.system("rm -rf *.mo")
