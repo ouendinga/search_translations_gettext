@@ -53,6 +53,38 @@ def get_hash_variables(line):
         result += ['"' + part.split('")')[0] + '"']
     return result
 
+def clean_variable(hash_variable):
+    string_wrapped_simple_quotes = False
+        
+    if hash_variable.startswith("'") and hash_variable.endswith("'"):
+        string_wrapped_simple_quotes = True
+
+    with_double_quotes = False
+    with_simple_quotes = False
+    if "\"" in hash_variable[1:-1]:
+        with_double_quotes = True
+    if "'" in hash_variable[1:-1]:
+        with_simple_quotes = True
+
+    if not with_double_quotes and not with_simple_quotes:
+        with_simple_quotes = True
+
+    if with_double_quotes:
+        hash_variable = hash_variable.replace('\\"', '"')
+
+    if with_simple_quotes:
+        hash_variable = hash_variable.replace("\\'", "'")
+
+    if with_double_quotes:
+        hash_variable = "\""+hash_variable[1:-1].replace('"', '\\"')+"\""
+
+    if string_wrapped_simple_quotes and with_simple_quotes:
+        hash_variable = '"' + hash_variable[1:-1] + '"'
+
+    hash_variable = hash_variable.strip()
+
+    return hash_variable
+
 def search_php_files(directory_search, translate):
     print("Searching translations in \033[93m" + directory_search+"\033[0m")
     for root, dirs, files in os.walk(directory_search):
