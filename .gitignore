@@ -2,3 +2,6 @@
 *.po
 # Compiled translations
 *.mo
+
+# Config name recommended
+search_translations_config.json
